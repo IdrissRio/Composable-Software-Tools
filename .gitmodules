@@ -1,0 +1,9 @@
+[submodule "Replace"]
+	path = Replace
+	url = https://github.com/IdrissRio/Replace.git
+[submodule "Filter"]
+	path = Filter
+	url = https://github.com/IdrissRio/Filter.git
+[submodule "JAVA2AST"]
+	path = JAVA2AST
+	url = https://github.com/IdrissRio/JAVA2AST
