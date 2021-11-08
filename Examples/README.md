@@ -80,6 +80,6 @@ java -jar java2ast.jar ../Examples/Example.java -property=all | java -jar ../Fil
 ```
 This command will not change the original source file, but will print on standard output a preview of all the changes:
 
-![alt text](https://github.com/IdrissRio/Composable-Software-Tools/tree/main/Examples/Resources/NEWBAR.png)
+![alt text](Resources/NEWBAR.png)
 
 While, adding the flag `-fix` will directly apply the changes on the original file.
