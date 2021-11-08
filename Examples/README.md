@@ -83,3 +83,35 @@ This command will not change the original source file, but will print on standar
 ![alt text](Resources/NEWBAR.png)
 
 While, adding the flag `-fix` will directly apply the changes on the original file.
+
+## Renaming variables usign variable identifier
+In this example we will use the `UniqueID` to identify an object in our Java file. In this case, we want to rename all the uses of the variable `FOO` declared at line 3, with `field_foo`. `UniqueID` is an unique identifier composed by `OBJECT_NAME, DECL LINE START, DECL COLUMN START".
+
+```
+java -jar java2ast.jar ../Examples/Example.java -property=all | java -jar ../Filter/app/filter.jar -filterby=uniqueid{foo:3:7} | java -jar ../Replace/app/replace.jar -replacewith=field_FOO
+```
+resulting in the following replacements:
+![alt text](Resources/field_FOO.png).
+
+
+## Renaming class and all its uses
+UniqueID is provided also to `Type Declarations` and `Type Accesses`. In this case, we will replace all the uses of the class `Example` with `Esempio` (i.e., Example in italian). This will result in the following replacements:
+![alt text](Resources/Esempio.png).
+
+
+## Renaming within multiple compilation units
+In this example we will introduce a new file `Example2.java` defined as follow:
+```java
+public class Example2 {
+  void m() { int x = Example.baz; }
+}
+```
+
+As before, we want to rename all the occurrence of `Example` with `Esempio`. This is done by running the following command:
+```java -jar java2ast.jar ../Examples/*.java -property=all | java -jar ../Filter/app/filter.jar -filterby=uniqueid{example:1:14} | java -jar ../Replace/app/replace.jar -replacewith=Esempio```
+The only difference between this command and the one presented in `Renaming class and all it uses` is that we are passing all the involved java file. In this case this is done with `../Examples/*.java`.
+
+![alt text](Resources/multipleEsempio.png).
+
+
+
