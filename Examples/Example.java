@@ -1,5 +1,5 @@
 public class Example {
-  static int baz;
+  public static int baz;
   int FOO = 0;
   int test() {
     int z = Example.baz;
